@@ -1,0 +1,82 @@
+:root {
+  --scb-blue: #0473EA;
+  --scb-honolulu: #0072AA;
+  --scb-green: #38D200;
+  --scb-american-green: #21AA47;
+  --scb-iceberg: #78ADD2;
+  --scb-eton-blue: #A4D0A0;
+  --scb-white: #FFFFFF;
+  --scb-light-gray: #F8F9FA;
+  --scb-shadow: 0 2px 8px rgba(4,115,234,0.08);
+  --scb-font: 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif;
+}
+
+body, html {
+  font-family: var(--scb-font);
+  background: var(--scb-light-gray);
+  color: var(--scb-honolulu);
+}
+
+.mainDiv_nk {
+  background: linear-gradient(90deg, var(--scb-blue) 0%, var(--scb-iceberg) 100%);
+  border-radius: 12px;
+  box-shadow: var(--scb-shadow);
+  padding: 32px 24px;
+  margin: 24px auto;
+  max-width: 900px;
+}
+.logoDiv_nk img {
+  border-radius: 12px;
+  box-shadow: var(--scb-shadow);
+}
+.button_nk, .logoDiv_nk button {
+  background: var(--scb-green);
+  color: var(--scb-white);
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  padding: 10px 28px;
+  transition: background 0.25s;
+}
+.button_nk:hover, .logoDiv_nk button:hover {
+  background: var(--scb-american-green);
+}
+
+/* Card/Container style for reports */
+.subscribed_reports_list_nk, .notification_nk {
+  background: var(--scb-white);
+  border-radius: 10px;
+  box-shadow: var(--scb-shadow);
+  margin: 14px 0;
+  padding: 18px 14px;
+}
+
+/* Inputs and Search Bar */
+.subscribed_reports_search_bar_nk input {
+  border-radius: 8px;
+  background: var(--scb-iceberg);
+  box-shadow: var(--scb-shadow);
+  border: 1px solid var(--scb-honolulu);
+  padding: 10px 14px;
+  font-size: 1em;
+}
+
+.subscribed_reports_search_bar_nk input:focus {
+  outline: 2px solid var(--scb-blue);
+  background: var(--scb-white);
+}
+
+/* Tables */
+.table-group-divider {
+  border-top: 2px solid var(--scb-eton-blue);
+}
+
+/* Notifications */
+.notification_content_nk {
+  color: var(--scb-blue);
+  margin: 12px 0;
+}
+
+hr {
+  border: 0.5px solid var(--scb-eton-blue);
+}
