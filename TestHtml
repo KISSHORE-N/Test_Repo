@@ -1,0 +1,29 @@
+return (
+  <div className="mainDiv_nk">
+    <header className="logoDiv_nk">
+      <img src={logo} alt="Standard Chartered Logo" />
+      <button className="button_nk" onClick={logout}>Logout</button>
+    </header>
+    <section className="nameDiv_nk">
+      <h1>{subscriber.name}</h1>
+      <p>{subscriber.email}</p>
+    </section>
+    <div className="contentDiv_nk">
+      <div className="subscribed_reports_nk">
+        <div className="subscribed_title_search_div_nk">
+          <h3>Subscribed Reports</h3>
+          <input type="text" placeholder="Search reports..." className="subscribed_reports_search_bar_nk" value={searchTerm} onChange={setSearchTerm} />
+        </div>
+        <div className="subscribed_reports_list_nk">
+          {/* Tabular List/Map */}
+        </div>
+      </div>
+      <div className="notification_nk">
+        <h3>Notifications</h3>
+        <div className="notification_content_nk">
+          {/* Notifications List */}
+        </div>
+      </div>
+    </div>
+  </div>
+);
