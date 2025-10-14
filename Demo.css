@@ -7,8 +7,8 @@
   --scb-eton-blue: #A4D0A0;
   --scb-white: #FFFFFF;
   --scb-light-gray: #F8F9FA;
-  --scb-shadow: 0 2px 8px rgba(4,115,234,0.08);
   --scb-font: 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif;
+  --scb-shadow: 0 2px 8px rgba(4,115,234,0.08);
 }
 
 body, html {
@@ -17,66 +17,148 @@ body, html {
   color: var(--scb-honolulu);
 }
 
-.mainDiv_nk {
-  background: linear-gradient(90deg, var(--scb-blue) 0%, var(--scb-iceberg) 100%);
-  border-radius: 12px;
+.dashboard-container {
+  max-width: 1050px;
+  margin: 30px auto;
+  background: var(--scb-white);
+  border-radius: 16px;
   box-shadow: var(--scb-shadow);
-  padding: 32px 24px;
-  margin: 24px auto;
-  max-width: 900px;
+  overflow: hidden;
 }
-.logoDiv_nk img {
-  border-radius: 12px;
-  box-shadow: var(--scb-shadow);
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(90deg, var(--scb-blue), var(--scb-iceberg));
+  color: var(--scb-white);
+  padding: 22px 32px;
 }
-.button_nk, .logoDiv_nk button {
+
+.logo-holder .scb-logo {
+  width: 54px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.subscriber-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+  gap: 2px;
+}
+
+.subscriber-name {
+  font-weight: 700;
+  font-size: 1.25em;
+}
+
+.logout-btn {
   background: var(--scb-green);
   color: var(--scb-white);
-  border-radius: 8px;
   border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
   font-weight: 600;
-  padding: 10px 28px;
-  transition: background 0.25s;
+  cursor: pointer;
+  transition: background .2s;
 }
-.button_nk:hover, .logoDiv_nk button:hover {
+.logout-btn:hover {
   background: var(--scb-american-green);
 }
 
-/* Card/Container style for reports */
-.subscribed_reports_list_nk, .notification_nk {
-  background: var(--scb-white);
+.dashboard-main {
+  padding: 28px 36px;
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: var(--scb-light-gray);
   border-radius: 10px;
+  padding: 28px 24px;
   box-shadow: var(--scb-shadow);
-  margin: 14px 0;
-  padding: 18px 14px;
+  min-width: 320px;
+  min-height: 160px;
+  flex: 1;
 }
 
-/* Inputs and Search Bar */
-.subscribed_reports_search_bar_nk input {
-  border-radius: 8px;
-  background: var(--scb-iceberg);
-  box-shadow: var(--scb-shadow);
-  border: 1px solid var(--scb-honolulu);
-  padding: 10px 14px;
-  font-size: 1em;
-}
-
-.subscribed_reports_search_bar_nk input:focus {
-  outline: 2px solid var(--scb-blue);
-  background: var(--scb-white);
-}
-
-/* Tables */
-.table-group-divider {
-  border-top: 2px solid var(--scb-eton-blue);
-}
-
-/* Notifications */
-.notification_content_nk {
+.notification-section h2, .reports-section h2 {
+  font-size: 1.24em;
   color: var(--scb-blue);
-  margin: 12px 0;
+  margin-bottom: 16px;
 }
 
-hr {
-  border: 0.5px solid var(--scb-eton-blue);
+.notification-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.notification-item {
+  margin: 13px 0;
+  font-size: 1em;
+  color: var(--scb-honolulu);
+}
+
+.reports-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.report-search {
+  border-radius: 8px;
+  border: 1px solid var(--scb-iceberg);
+  padding: 7px 14px;
+  font-size: 1em;
+  width: 180px;
+  background: var(--scb-white);
+  color: var(--scb-honolulu);
+  transition: border 0.2s;
+}
+.report-search:focus {
+  border: 1.5px solid var(--scb-blue);
+  outline: none;
+}
+
+.reports-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 14px;
+}
+.reports-table th, .reports-table td {
+  padding: 14px 10px;
+  text-align: left;
+}
+.reports-table th {
+  background: var(--scb-iceberg);
+  color: var(--scb-honolulu);
+  font-weight: 600;
+}
+.reports-table tr {
+  background: var(--scb-white);
+  border-bottom: 1px solid var(--scb-eton-blue);
+}
+.reports-table tr:hover {
+  background: var(--scb-light-gray);
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.95em;
+}
+.status-badge.active {
+  background: var(--scb-green);
+  color: var(--scb-white);
+}
+.status-badge.inactive {
+  background: var(--scb-eton-blue);
+  color: var(--scb-honolulu);
 }
