@@ -1,29 +1,109 @@
-return (
-  <div className="mainDiv_nk">
-    <header className="logoDiv_nk">
-      <img src={logo} alt="Standard Chartered Logo" />
-      <button className="button_nk" onClick={logout}>Logout</button>
-    </header>
-    <section className="nameDiv_nk">
-      <h1>{subscriber.name}</h1>
-      <p>{subscriber.email}</p>
-    </section>
-    <div className="contentDiv_nk">
-      <div className="subscribed_reports_nk">
-        <div className="subscribed_title_search_div_nk">
-          <h3>Subscribed Reports</h3>
-          <input type="text" placeholder="Search reports..." className="subscribed_reports_search_bar_nk" value={searchTerm} onChange={setSearchTerm} />
+import React, { useState } from 'react';
+
+const notifications = [
+  { report: "Ops Reports", message: "New operations report uploaded on 2025-10-09" },
+  { report: "Finance Reports", message: "Monthly Finance report summary available" },
+  { report: "Compliance Data", message: "Compliance data access restored" }
+];
+
+const subscribedReports = [
+  {
+    id: 1,
+    adGroup: "Ops Reports",
+    description: "Operations and performance reports",
+    subscribedOn: "2025-09-12",
+    status: "Active"
+  },
+  {
+    id: 2,
+    adGroup: "Finance Reports",
+    description: "Financial insights and expense summaries",
+    subscribedOn: "2025-09-20",
+    status: "Active"
+  },
+  {
+    id: 3,
+    adGroup: "Compliance Data",
+    description: "Compliance and audit data access",
+    subscribedOn: "2025-08-30",
+    status: "Inactive"
+  }
+];
+
+export default function Dashboard({ subscriber }) {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredReports = subscribedReports.filter(report =>
+    report.adGroup.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  return (
+    <div className="dashboard-container">
+      <header className="dashboard-header">
+        <div className="logo-holder">
+          <img src="/logo.png" alt="Standard Chartered Logo" className="scb-logo" />
         </div>
-        <div className="subscribed_reports_list_nk">
-          {/* Tabular List/Map */}
+        <div className="subscriber-details">
+          <span className="subscriber-name">{subscriber.name}</span>
+          <span className="subscriber-email">{subscriber.email}</span>
         </div>
-      </div>
-      <div className="notification_nk">
-        <h3>Notifications</h3>
-        <div className="notification_content_nk">
-          {/* Notifications List */}
-        </div>
-      </div>
+        <button className="logout-btn">Logout</button>
+      </header>
+      <main className="dashboard-main">
+        <section className="notification-section card">
+          <h2>Notifications</h2>
+          <ul className="notification-list">
+            {notifications.map((note, idx) => (
+              <li key={idx} className="notification-item">
+                <strong>{note.report}:</strong> {note.message}
+              </li>
+            ))}
+          </ul>
+        </section>
+        <section className="reports-section card">
+          <div className="reports-header">
+            <h2>Subscribed Reports</h2>
+            <input
+              type="text"
+              className="report-search"
+              placeholder="Search reports..."
+              value={searchTerm}
+              onChange={e => setSearchTerm(e.target.value)}
+            />
+          </div>
+          <table className="reports-table">
+            <thead>
+              <tr>
+                <th>Group</th>
+                <th>Description</th>
+                <th>Subscribed On</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredReports.map(report => (
+                <tr key={report.id}>
+                  <td>{report.adGroup}</td>
+                  <td>{report.description}</td>
+                  <td>{report.subscribedOn}</td>
+                  <td>
+                    <span className={`status-badge ${report.status === 'Active' ? 'active' : 'inactive'}`}>
+                      {report.status}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+              {filteredReports.length === 0 && (
+                <tr>
+                  <td colSpan="4" style={{ textAlign: "center", padding: "18px" }}>
+                    No reports found.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </section>
+      </main>
     </div>
-  </div>
-);
+  );
+}
